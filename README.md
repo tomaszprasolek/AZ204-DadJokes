@@ -9,3 +9,18 @@ Azure Container Registry:
 
 Portal Azure:
 - https://learn.microsoft.com/en-us/answers/questions/1369827/(solved)-status-401-unauthorized-shows-in-the-repo
+
+
+Azure Command
+```
+az container create \
+    --resource-group az204-dadjokes-rg \
+    --name devdadjokes \
+    --image crdadjokespc.azurecr.io/dadjokes:v0.0.3
+    --restart-policy OnFailure \
+    --environment-variables 'RunningEnvironment'='dev_azure'\
+
+
+
+az container create --resource-group az204-dadjokes-rg --name devdadjokes --image crdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure
+```
