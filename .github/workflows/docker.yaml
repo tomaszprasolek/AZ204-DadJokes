@@ -1,4 +1,4 @@
-name: Docker
+name: Publish image to ACR
 
 on:
   push:
