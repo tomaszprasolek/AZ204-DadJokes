@@ -16,11 +16,13 @@ Azure Command
 az container create \
     --resource-group az204-dadjokes-rg \
     --name devdadjokes \
-    --image crdadjokespc.azurecr.io/dadjokes:v0.0.3
+    --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3
     --restart-policy OnFailure \
-    --environment-variables 'RunningEnvironment'='dev_azure'\
+    --environment-variables 'RunningEnvironment'='dev_azure' \
+    --ports 80 \
+    --dns-name-label tomotest \
 
 
 
-az container create --resource-group az204-dadjokes-rg --name devdadjokes --image crdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure
+az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomotest
 ```
