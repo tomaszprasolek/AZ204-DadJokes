@@ -12,6 +12,8 @@ Portal Azure:
 - https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-service-principal
 - https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 
+Github Actions:
+- https://github.com/marketplace/actions/get-latest-tag
 
 Azure Commands
 ```

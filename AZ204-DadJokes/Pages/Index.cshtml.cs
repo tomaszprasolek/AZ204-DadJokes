@@ -31,7 +31,7 @@ public class IndexModel : PageModel
 
         var request = new HttpRequestMessage(HttpMethod.Get, "/");
         request.Headers.Add("Accept", "application/json");
-        request.Headers.Add("User-Agent", "https://github.com/tomaszprasolek/AZ204-DadJokes");
+        request.Headers.Add("User-Agent", "AZ204-DadJokes/v.0.0.1 (https://github.com/tomaszprasolek/AZ204-DadJokes)");
 
         HttpResponseMessage httpResponse = await httpClient.SendAsync(request, cancellationToken);
         var joke = await httpResponse.Content.ReadFromJsonAsync<Joke>(cancellationToken: cancellationToken);
