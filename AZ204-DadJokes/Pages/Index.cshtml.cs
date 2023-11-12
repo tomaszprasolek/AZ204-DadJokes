@@ -15,6 +15,7 @@ public class IndexModel : PageModel
 
     public string Joke { get; set; } = string.Empty;
     public string? RunningEnvironment { get; set; }
+    public string Version { get; set; } = "v0.0.1";
 
     public async Task OnGet(CancellationToken cancellationToken)
     {
@@ -22,6 +23,7 @@ public class IndexModel : PageModel
         Joke = joke.Content;
 
         RunningEnvironment = Environment.GetEnvironmentVariable("RunningEnvironment");
+        Version = Environment.GetEnvironmentVariable("VERSION") ?? "v0.0.1";
     }
 
     private static async Task<Joke> GetRandomJoke(CancellationToken cancellationToken)
