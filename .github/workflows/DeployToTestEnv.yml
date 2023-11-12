@@ -1,0 +1,8 @@
+on:
+  workflow_dispatch
+
+jobs:
+  call-deploy-workflow:
+    uses: ./.github/workflows/Deploy_ReusableWorkflow.yml
+    with:
+      environment-name: test
