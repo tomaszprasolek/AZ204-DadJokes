@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Deploy to selected environment environment
+name: Deploy to selected environment
 
 on:
   workflow_call:
