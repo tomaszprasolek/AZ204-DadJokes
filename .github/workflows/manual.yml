@@ -1,6 +1,11 @@
 # This is a basic workflow that is manually triggered
 
-name: Deploy to test
+name: Deploy to test environment
+
+# TODO
+# Must be parametrized:
+# - name of the container
+# - container image name
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -29,4 +34,4 @@ jobs:
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
+          az container create --resource-group az204-dadjokes-rg --name testdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
