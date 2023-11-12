@@ -18,10 +18,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az login
           az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
