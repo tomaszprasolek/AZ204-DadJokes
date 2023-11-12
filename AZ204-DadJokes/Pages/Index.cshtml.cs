@@ -15,7 +15,6 @@ public class IndexModel : PageModel
 
     public string Joke { get; set; } = string.Empty;
     public string? RunningEnvironment { get; set; }
-    public string? LaunchProfile { get; set; }
 
     public async Task OnGet(CancellationToken cancellationToken)
     {
@@ -23,7 +22,6 @@ public class IndexModel : PageModel
         Joke = joke.Content;
 
         RunningEnvironment = Environment.GetEnvironmentVariable("RunningEnvironment");
-        LaunchProfile = Environment.GetEnvironmentVariable("PROFILE");
     }
 
     private static async Task<Joke> GetRandomJoke(CancellationToken cancellationToken)
@@ -33,6 +31,7 @@ public class IndexModel : PageModel
 
         var request = new HttpRequestMessage(HttpMethod.Get, "/");
         request.Headers.Add("Accept", "application/json");
+        request.Headers.Add("User-Agent", "https://github.com/tomaszprasolek/AZ204-DadJokes");
 
         HttpResponseMessage httpResponse = await httpClient.SendAsync(request, cancellationToken);
         var joke = await httpResponse.Content.ReadFromJsonAsync<Joke>(cancellationToken: cancellationToken);
