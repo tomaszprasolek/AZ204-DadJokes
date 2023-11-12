@@ -1,4 +1,4 @@
-name: [Manual trigger] Deploy to test environment
+name: "[Manual trigger] Deploy to test environment"
 
 on:
   workflow_dispatch
