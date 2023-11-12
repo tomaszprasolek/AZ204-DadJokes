@@ -1,3 +1,5 @@
+name: Deploy to test environment
+
 on:
   workflow_dispatch
 
