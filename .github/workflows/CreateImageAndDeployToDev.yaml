@@ -31,3 +31,6 @@ jobs:
             version=${{ steps.tag.outputs.tag }}
           tags: ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:${{ steps.tag.outputs.tag }}
           file: AZ204-DadJokes/Dockerfile
+          
+  call-deploy-workflow:
+    uses: ./.github/workflows/Deploy_ReusableWorkflow.yml
