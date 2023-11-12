@@ -14,6 +14,7 @@ Portal Azure:
 
 Github Actions:
 - https://github.com/marketplace/actions/get-latest-tag
+- https://github.com/actions/runner/issues/1413#issuecomment-1197936320
 
 Azure Commands
 ```
