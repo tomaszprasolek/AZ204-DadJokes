@@ -9,9 +9,11 @@ Azure Container Registry:
 
 Portal Azure:
 - https://learn.microsoft.com/en-us/answers/questions/1369827/(solved)-status-401-unauthorized-shows-in-the-repo
+- https://learn.microsoft.com/en-us/cli/azure/authenticate-azure-cli-service-principal
+- https://learn.microsoft.com/en-us/cli/azure/azure-cli-sp-tutorial-1?tabs=bash
 
 
-Azure Command
+Azure Commands
 ```
 az container create \
     --resource-group az204-dadjokes-rg \
@@ -24,5 +26,10 @@ az container create \
 
 
 
-az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomotest
+az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username SECRET --registry-password SECRET
+
+
+
+az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role reader --scopes /subscriptions/7807bc5e-0702-4fce-bd01-5fae8b54746e/resourceGroups/az204-dadjokes-rg
 ```
+
