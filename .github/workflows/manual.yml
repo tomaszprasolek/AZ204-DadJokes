@@ -21,9 +21,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      RunningEnvironment: test
-
     steps:
     
     - name: Login to Azure
@@ -36,4 +33,4 @@ jobs:
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az container create --resource-group az204-dadjokes-rg --name testdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
+          az container create --resource-group az204-dadjokes-rg --name testdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --environment-variables RunningEnvironment=auzre-test-env --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
