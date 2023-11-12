@@ -36,4 +36,4 @@ jobs:
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az container create --resource-group az204-dadjokes-rg --name ${{ inputs.environment-name }}dadjokes --image acrdadjokespc.azurecr.io/dadjokes:${{ steps.previoustag.outputs.tag }} --restart-policy OnFailure --ports 80 --dns-name-label tomo${{ inputs.environment-name }}dadjokes --environment-variables RunningEnvironment=auzre-${{ inputs.environment-name }}-env --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
+          az container create --resource-group az204-dadjokes-rg --name ${{ inputs.environment-name }}dadjokes --image acrdadjokespc.azurecr.io/dadjokes:${{ steps.previoustag.outputs.tag }} --restart-policy OnFailure --ports 80 --dns-name-label tomo${{ inputs.environment-name }}dadjokes --environment-variables RunningEnvironment=auzre-${{ inputs.environment-name }}-env VERSION=${{ steps.previoustag.outputs.tag }} --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
