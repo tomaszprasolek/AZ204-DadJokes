@@ -6,5 +6,6 @@ on:
 jobs:
   call-deploy-workflow:
     uses: ./.github/workflows/Deploy_ReusableWorkflow.yml
+    secrets: inherit
     with:
       environment-name: test
