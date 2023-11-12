@@ -1,37 +1,26 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Deploy to test
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
 on:
   workflow_dispatch:
-    # Inputs the workflow accepts.
     inputs:
-      name:
-        # Friendly description to be shown in the UI instead of 'name'
-        description: 'Person to greet'
-        # Default value if no value is explicitly provided
-        default: 'World'
-        # Input has to be provided for the workflow to run
+      version:
+        description: 'The version of the app'
         required: true
-        # The data type of the input
         type: string
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
-    # The type of runner that the job will run on
+  deploy:
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    # Runs a single command using the runners shell
     - name: Azure CLI script
       uses: azure/CLI@v1
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az account show
-          az storage -h
+          az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
