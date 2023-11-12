@@ -22,6 +22,17 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
+
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0 # Required due to the way Git works, without it this action won't be able to find any or the correct tags
+        
+    - name: 'Get Previous tag'
+      id: previoustag
+      uses: "WyriHaximus/github-action-get-previous-tag@v1"
+      with:
+        fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
     
     - name: Login to Azure
       uses: Azure/login@v1.4.6
@@ -33,4 +44,4 @@ jobs:
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az container create --resource-group az204-dadjokes-rg --name testdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --environment-variables RunningEnvironment=auzre-test-env --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
+          az container create --resource-group az204-dadjokes-rg --name testdadjokes --image acrdadjokespc.azurecr.io/dadjokes:${{ steps.previoustag.outputs.tag }} --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --environment-variables RunningEnvironment=auzre-test-env --registry-username  ${{ secrets.ACR_USERNAME }} --registry-password ${{ secrets.ACR_PASSWORD }}
