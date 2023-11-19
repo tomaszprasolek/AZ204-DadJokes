@@ -16,6 +16,27 @@ Github Actions:
 - https://github.com/marketplace/actions/get-latest-tag
 - https://github.com/actions/runner/issues/1413#issuecomment-1197936320
 
+Azure Bicep links:
+- https://www.youtube.com/watch?v=VDCAJIGqHZU&pp=ygULYXp1cmUgYmljZXA%3D
+- https://www.youtube.com/watch?v=atWVFV7Y4vY
+- https://johnlokerse.dev/2023/09/11/azure-bicep-tips-tricks/
+- https://www.thorsten-hans.com/how-to-deploy-azure-container-apps-with-bicep/
+
+Azure Bicep commands:
+```
+// TODO: check this
+
+// Create role assignment
+resource registryRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
+  name: guid(subscription().subscriptionId, resourceGroup().name, registryName, roleId, principalId)
+  scope: acr
+  properties: {
+    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', roleId)
+    principalId: principalId
+  }
+}
+```
+
 Azure Commands
 ```
 az container create \
@@ -34,5 +55,8 @@ az container create --resource-group az204-dadjokes-rg --name devdadjokes --imag
 
 
 az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role reader --scopes /subscriptions/7807bc5e-0702-4fce-bd01-5fae8b54746e/resourceGroups/az204-dadjokes-rg
+
+
+az deployment group create --resource-group az204-dadjokes-rg --template-file containerApps.bicep --parameters version='v0.0.16'
 ```
 
