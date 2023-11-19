@@ -21,6 +21,7 @@ Azure Bicep links:
 - https://www.youtube.com/watch?v=atWVFV7Y4vY
 - https://johnlokerse.dev/2023/09/11/azure-bicep-tips-tricks/
 - https://www.thorsten-hans.com/how-to-deploy-azure-container-apps-with-bicep/
+- https://stackoverflow.com/questions/72044477/creating-container-registry-from-azure-bicep-and-deploying-image-to-this-registr
 
 Azure Bicep commands:
 ```

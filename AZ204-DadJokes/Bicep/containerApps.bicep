@@ -6,7 +6,7 @@ var varEnvironmentType = 'prod'
 
 
 resource resEnvironment 'Microsoft.App/managedEnvironments@2023-05-02-preview' = {
-  name: 'acaEnvDadjokesPc'
+  name: 'acaEnvDadjokesNe'
   location: parLocation
 }
 
