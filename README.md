@@ -1,5 +1,5 @@
 # AZ204-DadJokes
-Project created in purpose to learn some things needed to pass  AZ-204 exam
+Project created in purpose to learn some things needed to pass AZ-204 exam
 
 ## Links:
 
@@ -61,6 +61,9 @@ az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor -
 az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal-V2 --role contributor --scopes /subscriptions/7807bc5e-0702-4fce-bd01-5fae8b54746e/resourceGroups/rg-Dadjokes-ne --sdk-auth
 
 
-az deployment group create --resource-group az204-dadjokes-rg --template-file containerApps.bicep --parameters version='v0.0.16'
+az deployment group create --resource-group rg-Dadjokes-ne --template-file containerApps.bicep --parameters parVersion='v0.0.16'
+
+
+az containerapp env create --name acaEnvDadjokesNe --resource-group rg-Dadjokes-ne --location northeurope
 ```
 
