@@ -55,7 +55,10 @@ az container create --resource-group az204-dadjokes-rg --name devdadjokes --imag
 
 
 
-az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role reader --scopes /subscriptions/7807bc5e-0702-4fce-bd01-5fae8b54746e/resourceGroups/az204-dadjokes-rg --sdk-auth
+az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/7807bc5e-0702-4fce-bd01-5fae8b54746e/resourceGroups/az204-dadjokes-rg --sdk-auth
+
+
+az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal-V2 --role contributor --scopes /subscriptions/7807bc5e-0702-4fce-bd01-5fae8b54746e/resourceGroups/rg-Dadjokes-ne --sdk-auth
 
 
 az deployment group create --resource-group az204-dadjokes-rg --template-file containerApps.bicep --parameters version='v0.0.16'
