@@ -1,8 +1,7 @@
-name: Publish image to ACR
+name: Publish image to ACR and deploy to dev environment
 
 on:
-  push:
-    tags: ["v*.*.*"]
+  workflow_dispatch
 
 env:
   IMAGE_NAME: dadjokes
