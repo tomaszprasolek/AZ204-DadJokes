@@ -1,7 +1,7 @@
 name: Publish image to ACR and deploy to dev environment
 
 on:
-  workflow_dispatch
+  workflow_call
 
 env:
   IMAGE_NAME: dadjokes
