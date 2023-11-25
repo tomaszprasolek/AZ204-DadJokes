@@ -1,0 +1,10 @@
+name: "[Git tag trigger] Public image to ACR and deploy to dev environment"
+
+on:
+  push:
+    tags: ["v*.*.*"]
+    
+jobs:
+  call-deploy-workflow:
+    uses: ./.github/workflows/CreateImageAndDeployToDev.yml
+    secrets: inherit
