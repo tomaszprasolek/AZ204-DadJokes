@@ -4,14 +4,15 @@ Project created in purpose to learn some things needed to pass AZ-204 exam
 ## How to set up all environemnt with all Azure resources
 
 1. Create resource group when all other Azure resource will be placed
-2. You need to get your principal identifier from Azure, it is needed for the next script. You can find it: Users >> your user >> Object Id. It is need to add your user the `Contributor` role to Azure Container Registry (ACR).
+2. Get your principal identifier from Azure, it is needed for the next script. You can find it: Users >> your user >> Object Id. It is need to add your user the `Contributor` role to Azure Container Registry (ACR).
 3. Run `main.bicep` script (AZ204-DadJokes/Bicep/main.bicep) and pass `Object Id` as parameter.
 4. Command to run Bicep script: `az deployment group create --resource-group rg-Dadjokes-ne --template-file .\AZ204-DadJokes\Bicep\main.bicep --parameters parPrincipalId='your-object-id'. **Remember changing the resource group name and principal id.**
 5. In that moment you should have **Azure Container Registry created on the Azure**.
-6. Now you need to run this command `az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/#your-subsciption-guid#/resourceGroups/rg-Dadjokes-ne --sdk-auth`. This command will generate the JSON with credentials to the Azure. You need this to able Github to login into Azure.
+6. Copy password from ACR (ACR >> Settings >> Access Keys >> password) to Github repository secrets (Settings >> Security >> Secret and variables >> Actions) to `ACR_PASSWORD` field.
+7. Run command `az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/#your-subsciption-guid#/resourceGroups/rg-Dadjokes-ne --sdk-auth`. This command will generate the JSON with credentials to the Azure. You need this to able Github to login into Azure.
    
   1. Scope you get from your resource group, click `JSON view` in Overview tab and the `id` field it will be that scope.
-  2. The generated JSON you need to copy to Github Actions repository secrets (Settings >> Security >> Secret and variables >> Actions) to `AZURE_CREDENTIALS_V2`
+  2. The generated JSON you need to copy to Github repository secrets (Settings >> Security >> Secret and variables >> Actions) to `AZURE_CREDENTIALS_V2`
 9. Now you can publish docker image to Azure Container Registry. There are 2 options:  
     
     6. Push new tag to your Git repository, this will trigger the Github Action which publish docker image to ACR.
