@@ -1,0 +1,9 @@
+name: "[Manual trigger] Public image to ACR and deploy to dev environment"
+
+on:
+  workflow_dispatch
+    
+jobs:
+  call-deploy-workflow:
+    uses: ./.github/workflows/CreateImageAndDeployToDev.yml
+    secrets: inherit
