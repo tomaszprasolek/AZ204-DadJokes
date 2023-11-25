@@ -13,9 +13,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Get tag
-        id: tag
-        uses: dawidd6/action-get-tag@v1
+      - name: 'Get Previous tag'
+        id: previoustag
+        uses: "WyriHaximus/github-action-get-previous-tag@v1"
+        with:
+          fallback: 1.0.0 # Optional fallback tag to use when no tag can be found
       - name: Log into registry
         uses: docker/login-action@v1
         with:
@@ -28,7 +30,7 @@ jobs:
           push: true
           build-args: |
             version=${{ steps.tag.outputs.tag }}
-          tags: ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:${{ steps.tag.outputs.tag }}
+          tags: ${{ secrets.ACR_ENDPOINT }}/${{ env.IMAGE_NAME }}:${{ steps.previoustag.outputs.tag }}
           file: AZ204-DadJokes/Dockerfile
           
   call-deploy-workflow:
