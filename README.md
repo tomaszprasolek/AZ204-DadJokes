@@ -1,6 +1,18 @@
 # AZ204-DadJokes
 Project created in purpose to learn some things needed to pass AZ-204 exam
 
+## How to set up all environemnt with all Azure resources
+
+1. Create resource group when all other Azure resource will be placed
+2. You need to get your principal identifier from Azure, it is needed for the next script. You can find it: Users >> your user >> Object Id. It is need to add your user the `Contributor` role to Azure Container Registry (ACR).
+3. Run `main.bicep` script (AZ204-DadJokes/Bicep/main.bicep) and pass `Object Id` as parameter.
+4. Command to run Bicep script: `az deployment group create --resource-group rg-Dadjokes-ne --template-file .\AZ204-DadJokes\Bicep\main.bicep --parameters parPrincipalId='your-object-id'. **Remember changing the resource group name and principal id.**
+5. Now you can publish docker image to Azure Container Registry. There are 2 options:  
+    
+    6. Push new tag to your Git repository, this will trigger the Github Action which publish docker image to ACR.
+    7. Run `AZ204-DadJokes/Bicep/containerInstance.bicep` script. This script requires 2 parameters: environment type and version.
+    8. 
+
 ## Links:
 
 Azure Container Registry:
