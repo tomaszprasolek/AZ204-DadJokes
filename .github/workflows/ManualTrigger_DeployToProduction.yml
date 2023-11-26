@@ -22,7 +22,7 @@ jobs:
       with:
         azcliversion: 2.34.0
         inlineScript: |
-          az deployment group create --resource-group ${{ secrets.AZURE_RG }} --template-file ./AZ204-DadJokes/Bicep/ContainerApps/containerApps.bicep 'parVersion=${{ steps.previoustag.outputs.tag }} parEnvironmentId=${{ secrets.AZURE_CONTAINERAPPS_ENVIRONMENTID }}'
+          az deployment group create --resource-group ${{ secrets.AZURE_RG }} --template-file ./AZ204-DadJokes/Bicep/ContainerApps/containerApps.bicep --parameters 'parVersion=${{ steps.previoustag.outputs.tag }} parEnvironmentId=${{ secrets.AZURE_CONTAINERAPPS_ENVIRONMENTID }}'
       
       # Deploy Bicep file
     #- name: 'Deploy to container apps'
