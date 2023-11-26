@@ -26,8 +26,10 @@ public class IndexModel : PageModel
         Version = Environment.GetEnvironmentVariable("VERSION") ?? "v0.0.1";
     }
 
-    private static async Task<Joke> GetRandomJoke(CancellationToken cancellationToken)
+    private async Task<Joke> GetRandomJoke(CancellationToken cancellationToken)
     {
+        _logger.LogInformation("Getting the random Dad Joke");
+
         var httpClient = new HttpClient();
         httpClient.BaseAddress = new Uri("https://icanhazdadjoke.com/");
 
@@ -37,6 +39,8 @@ public class IndexModel : PageModel
 
         HttpResponseMessage httpResponse = await httpClient.SendAsync(request, cancellationToken);
         var joke = await httpResponse.Content.ReadFromJsonAsync<Joke>(cancellationToken: cancellationToken);
+
+        _logger.LogInformation("Dad joke: {Joke}", joke!.Content);
         return joke!;
     }
 }
