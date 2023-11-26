@@ -1,6 +1,14 @@
 # AZ204-DadJokes
 Project created in purpose to learn some things needed to pass AZ-204 exam
 
+Simulation of environments for developers, QAs and one production environment.
+
+What I used to do this:
+- **Azure Container Registry (ACR)** to store my app Docker images
+- **Azure Container Instance (ACI)** to deploy my apps. One ACI is used as **dev** environment, another as **test** environment
+- **Azure Container Apps** as production environment.
+- **GitHub Actions** to do all the work: prepare Docker image, publish it to ACR, deploy image to one of three environments:
+
 ![Azure resources diagram](DadJokes_Azure_Diagram.png)
 
 ## How to set up all environemnt with all Azure resources
