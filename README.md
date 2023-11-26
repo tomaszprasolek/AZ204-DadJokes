@@ -1,7 +1,7 @@
 # AZ204-DadJokes
 Project created in purpose to learn some things needed to pass AZ-204 exam
 
-![Azure resources diagram]("./DadJokes Azure Diagram.png")
+![Azure resources diagram](DadJokes_Azure_Diagram.png)
 
 ## How to set up all environemnt with all Azure resources
 
