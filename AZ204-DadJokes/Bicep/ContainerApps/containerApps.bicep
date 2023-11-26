@@ -1,7 +1,7 @@
 @sys.description('Format: v0.0.0')
 param parVersion string
 param parEnvironmentId string
-param parLocation string = 'northeurope'
+param parLocation string = resourceGroup().location
 
 var varEnvironmentType = 'prod' 
 
