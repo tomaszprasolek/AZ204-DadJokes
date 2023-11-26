@@ -17,19 +17,14 @@ jobs:
       id: previoustag
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
 
+    - name: Login to Azure
+      uses: Azure/login@v1.4.6
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS_V2 }}
+
     - name: 'Azure CLI script'
       uses: azure/CLI@v1
       with:
         azcliversion: 2.34.0
         inlineScript: |
           az deployment group create --resource-group ${{ secrets.AZURE_RG }} --template-file ./AZ204-DadJokes/Bicep/ContainerApps/containerApps.bicep --parameters 'parVersion=${{ steps.previoustag.outputs.tag }}' 'parEnvironmentId=${{ secrets.AZURE_CONTAINERAPPS_ENVIRONMENTID }}'
-      
-      # Deploy Bicep file
-    #- name: 'Deploy to container apps'
-    #  uses: azure/arm-deploy@v1
-    #  with:
-    #    subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-    #    resourceGroupName: ${{ secrets.AZURE_RG }}
-    #    template: ./AZ204-DadJokes/Bicep/ContainerApps/containerApps.bicep
-    #    parameters: 'parVersion=${{ steps.previoustag.outputs.tag }} parEnvironmentId=${{ secrets.AZURE_CONTAINERAPPS_ENVIRONMENTID }}'
-    #    failOnStdErr: false
