@@ -73,7 +73,6 @@ az container create \
 az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username SECRET --registry-password SECRET
 
 
-
 az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/***REMOVED***/resourceGroups/az204-dadjokes-rg --sdk-auth
 
 
@@ -84,5 +83,7 @@ az deployment group create --resource-group rg-Dadjokes-ne --template-file conta
 
 
 az containerapp env create --name acaEnvDadjokesNe --resource-group rg-Dadjokes-ne --location northeurope
-```
 
+
+az deployment group create --resource-group rg-Dadjokes-ne --template-file .\AZ204-DadJokes\Bicep\ContainerApps\main.bicep --parameters parVersion='v0.0.19'
+```
