@@ -1,25 +1,19 @@
 @sys.description('Format: v0.0.0')
 param parVersion string
+param parEnvironmentId string
 param parLocation string = 'northeurope'
 
 var varEnvironmentType = 'prod' 
-
-
-resource resEnvironment 'Microsoft.App/managedEnvironments@2023-05-02-preview' existing = {
-  name: 'acaEnvDadjokesNe'
-}
-
 
 resource resContainerRegistry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' existing = {
   name: 'acrDadjokesPc'
 }
 
-
 resource resContainerApps 'Microsoft.App/containerApps@2023-05-02-preview' ={
   name: 'aca-dadjokes-ne'
   location: parLocation
   properties:{
-    environmentId: resEnvironment.id
+    environmentId: parEnvironmentId
     configuration:{
       secrets:[
         {
