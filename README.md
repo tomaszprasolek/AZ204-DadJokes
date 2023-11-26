@@ -1,6 +1,8 @@
 # AZ204-DadJokes
 Project created in purpose to learn some things needed to pass AZ-204 exam
 
+![Azure resources diagram](.\DadJokes Azure Diagram.drawio.png)
+
 ## How to set up all environemnt with all Azure resources
 
 1. Create resource group when all other Azure resource will be placed
