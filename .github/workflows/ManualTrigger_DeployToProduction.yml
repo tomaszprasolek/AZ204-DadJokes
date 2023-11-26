@@ -18,7 +18,7 @@ jobs:
       uses: "WyriHaximus/github-action-get-previous-tag@v1"
 
       # Deploy Bicep file
-    - name: deploy
+    - name: 'Deploy to container apps'
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
