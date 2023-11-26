@@ -86,4 +86,6 @@ az containerapp env create --name acaEnvDadjokesNe --resource-group rg-Dadjokes-
 
 
 az deployment group create --resource-group rg-Dadjokes-ne --template-file .\AZ204-DadJokes\Bicep\ContainerApps\main.bicep --parameters parVersion='v0.0.19'
+
+
 ```
