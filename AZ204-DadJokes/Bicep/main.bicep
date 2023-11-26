@@ -1,7 +1,7 @@
 param location string = resourceGroup().location
 param parPrincipalId string
 
-// Resource group name: az204-dadjokes-rg
+// Resource group name: rg-Dadjokes-ne
 
 resource resContainerRegistry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
   name: 'acrDadjokesPc'
