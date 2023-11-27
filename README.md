@@ -52,6 +52,9 @@ Azure Bicep links:
 - https://stackoverflow.com/questions/72044477/creating-container-registry-from-azure-bicep-and-deploying-image-to-this-registr
 - https://www.serverlessnotes.com/docs/deploy-azure-container-apps-using-bicep
 
+Git:
+- https://jflower.co.uk/removing-sensitive-information-from-git-with-git-filter-repo/
+
 Azure Bicep commands:
 ```
 // TODO: check this
