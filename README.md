@@ -11,6 +11,11 @@ What I used to do this:
 
 ![Azure resources diagram](DadJokes_Azure_Diagram.png)
 
+All **Github Actions files** are in [.github/workflows](https://github.com/tomaszprasolek/AZ204-DadJokes/tree/master/.github/workflows) folder.  
+
+I also prepared **Azure Bicep scripts** to be able to very easily create all working environment from scratch.
+Bicep files are here: [AZ204-DadJokes/Bicep](https://github.com/tomaszprasolek/AZ204-DadJokes/tree/master/AZ204-DadJokes/Bicep).
+
 ## How to set up all environemnt with all Azure resources
 
 1. Create resource group when all other Azure resource will be placed
