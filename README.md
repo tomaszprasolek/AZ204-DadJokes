@@ -5,7 +5,7 @@
 
 ## Technologies used
 
-I created the ASP.NET Core Web Application. The app is very simple: show random Dad Jokes and that's all :smile:
+I created the ASP.NET Core Web Application. The app is very simple: show random Dad Jokes and that's all :smile: Jokes are downloaded from the site: [https://icanhazdadjoke.com/](https://icanhazdadjoke.com/).
 
 ![Website screenshot](./Resources/site_screenshot.png)
 
