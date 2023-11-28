@@ -5,7 +5,12 @@
 
 ## Technologies used
 
+I created the ASP.NET Core Web Application. The app is very simple: show random Dad Jokes and that's all :)
 
+![Website screenshot](./Resources/site_screenshot.png)
+
+The joke is written using large font. Under that information on which environment this app is deployed. And then are the app version.
+That's all the features :)
 
 What I used to do this:
 - **Azure Container Registry (ACR)** to store my app Docker images
@@ -13,7 +18,7 @@ What I used to do this:
 - **Azure Container Apps** as production environment.
 - **GitHub Actions** to do all the work: prepare Docker image, publish it to ACR, deploy image to one of three environments:
 
-![Azure resources diagram](DadJokes_Azure_Diagram.png)
+![Azure resources diagram](./Resources/DadJokes_Azure_Diagram.png)
 
 All **Github Actions files** are in [.github/workflows](https://github.com/tomaszprasolek/AZ204-DadJokes/tree/master/.github/workflows) folder.  
 
