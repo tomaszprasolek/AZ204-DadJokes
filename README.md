@@ -5,12 +5,12 @@
 
 ## Technologies used
 
-I created the ASP.NET Core Web Application. The app is very simple: show random Dad Jokes and that's all :)
+I created the ASP.NET Core Web Application. The app is very simple: show random Dad Jokes and that's all :smile:
 
 ![Website screenshot](./Resources/site_screenshot.png)
 
 The joke is written using large font. Under that information on which environment this app is deployed. And then are the app version.
-That's all the features :)
+That's all the features :smile:
 
 What I used to do this:
 - **Azure Container Registry (ACR)** to store my app Docker images
