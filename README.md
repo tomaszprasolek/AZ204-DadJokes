@@ -1,7 +1,11 @@
 # AZ204-DadJokes
-Project created in purpose to learn some things needed to pass AZ-204 exam
 
-Simulation of environments for developers, QAs and one production environment.
+> Project created in purpose to learn some things needed to pass AZ-204 exam.  
+> Simulation of environments for developers, QAs and one production environment.
+
+## Technologies used
+
+
 
 What I used to do this:
 - **Azure Container Registry (ACR)** to store my app Docker images
@@ -16,8 +20,7 @@ All **Github Actions files** are in [.github/workflows](https://github.com/tomas
 I also prepared **Azure Bicep scripts** to be able to very easily create all working environment from scratch.
 Bicep files are here: [AZ204-DadJokes/Bicep](https://github.com/tomaszprasolek/AZ204-DadJokes/tree/master/AZ204-DadJokes/Bicep).
 
-## How to set up all environemnt with all Azure resources
-
+## How to set up the environment on Azure
 1. Create resource group when all other Azure resource will be placed
 2. Get your principal identifier from Azure, it is needed for the next script. You can find it: Users >> your user >> Object Id. It is need to add your user the `Contributor` role to Azure Container Registry (ACR).
 3. Run `main.bicep` script (AZ204-DadJokes/Bicep/main.bicep) and pass `Object Id` as parameter.
