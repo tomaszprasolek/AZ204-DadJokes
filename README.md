@@ -24,15 +24,15 @@ Bicep files are here: [AZ204-DadJokes/Bicep](https://github.com/tomaszprasolek/A
 4. Command to run Bicep script: `az deployment group create --resource-group rg-Dadjokes-ne --template-file .\AZ204-DadJokes\Bicep\main.bicep --parameters parPrincipalId='your-object-id'`. **Remember changing the resource group name and principal id.**
 5. In that moment you should have **Azure Container Registry created on the Azure**.
 6. Copy password from ACR (ACR >> Settings >> Access Keys >> password) to Github repository secrets (Settings >> Security >> Secret and variables >> Actions) to `ACR_PASSWORD` field.
-7. Run command `az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/#your-subsciption-guid#/resourceGroups/rg-Dadjokes-ne --sdk-auth`. This command will generate the JSON with credentials to the Azure. You need this to able Github to login into Azure.
+7. Run command `az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/#your-subsciption-guid#/resourceGroups/rg-Dadjokes-ne --sdk-auth`. This command will generate the JSON with credentials to the Azure. You need this to able Github to login into Azure.  
    
-  1. Scope you get from your resource group, click `JSON view` in Overview tab and the `id` field it will be that scope.
-  2. The generated JSON you need to copy to Github repository secrets (Settings >> Security >> Secret and variables >> Actions) to `AZURE_CREDENTIALS_V2`
-9. Now you can publish docker image to Azure Container Registry. There are 2 options:  
+    1. Scope you can get from your resource group, click `JSON view` in Overview tab and the `id` field it will be that scope.
+    2. The generated JSON you need to copy to Github repository secrets (Settings >> Security >> Secret and variables >> Actions) to `AZURE_CREDENTIALS_V2`
+     
+8. Now you can publish docker image to Azure Container Registry. There are 2 options:  
     
-    6. Push new tag to your Git repository, this will trigger the Github Action which publish docker image to ACR.
-    7. Run `AZ204-DadJokes/Bicep/containerInstance.bicep` script. This script requires 2 parameters: environment type and version.
-    8. 
+    1. Push new tag to your Git repository, this will trigger the Github Action which publish docker image to ACR.
+    2. Run `AZ204-DadJokes/Bicep/containerInstance.bicep` script. This script requires 2 parameters: environment type and version. To run this you can use command `
 
 ## Links:
 
@@ -60,22 +60,9 @@ Azure Bicep links:
 Git:
 - https://jflower.co.uk/removing-sensitive-information-from-git-with-git-filter-repo/
 
-Azure Bicep commands:
-```
-// TODO: check this
+## Azure Commands
 
-// Create role assignment
-resource registryRoleAssignment 'Microsoft.Authorization/roleAssignments@2020-04-01-preview' = {
-  name: guid(subscription().subscriptionId, resourceGroup().name, registryName, roleId, principalId)
-  scope: acr
-  properties: {
-    roleDefinitionId: subscriptionResourceId('Microsoft.Authorization/roleDefinitions', roleId)
-    principalId: principalId
-  }
-}
-```
-
-Azure Commands
+Create Azure Container Instance, get image from Azure Container registry.
 ```
 az container create \
     --resource-group az204-dadjokes-rg \
@@ -86,24 +73,20 @@ az container create \
     --ports 80 \
     --dns-name-label tomotest \
 
-
-
 az container create --resource-group az204-dadjokes-rg --name devdadjokes --image acrdadjokespc.azurecr.io/dadjokes:v0.0.3 --restart-policy OnFailure --environment-variables RunningEnvironment=dev_azure --ports 80 --dns-name-label tomodadjokes --registry-username SECRET --registry-password SECRET
+```
 
-
+Generates the Azure credentails that can be used to login to Azure from Github Actions
+```
 az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal --role contributor --scopes /subscriptions/***REMOVED***/resourceGroups/az204-dadjokes-rg --sdk-auth
+```
 
-
-az ad sp create-for-rbac --name DadJokesRG-ServicePrincipal-V2 --role contributor --scopes /subscriptions/***REMOVED***/resourceGroups/rg-Dadjokes-ne --sdk-auth
-
-
+Run Azure Bicep script
+```
 az deployment group create --resource-group rg-Dadjokes-ne --template-file containerApps.bicep --parameters parVersion='v0.0.16'
+```
 
-
+Create managed environment needed to Azure Container Apps
+```
 az containerapp env create --name acaEnvDadjokesNe --resource-group rg-Dadjokes-ne --location northeurope
-
-
-az deployment group create --resource-group rg-Dadjokes-ne --template-file .\AZ204-DadJokes\Bicep\ContainerApps\main.bicep --parameters parVersion='v0.0.19'
-
-
 ```
